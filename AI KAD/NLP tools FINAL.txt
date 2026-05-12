@@ -1,0 +1,165 @@
+# =========================================
+# NLP PROGRAM FOR JUPYTER NOTEBOOK
+# =========================================
+
+# Install libraries (Run only once in Jupyter)
+# !pip install nltk pandas scikit-learn
+# %mamba install nltk pandas scikit-learn
+
+
+import nltk
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# =========================================
+# DOWNLOAD NLTK DATA
+# =========================================
+
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')
+
+# =========================================
+# TOKENIZATION
+# =========================================
+
+txt = "Let's see how it's working in such a high #temperature# also"
+
+from nltk.tokenize import sent_tokenize, word_tokenize
+
+print("Sentence Tokenization:")
+print(sent_tokenize(txt))
+
+print("\nWord Tokenization:")
+print(word_tokenize(txt))
+
+# Treebank Tokenizer
+from nltk.tokenize import TreebankWordTokenizer
+
+tokenizer = TreebankWordTokenizer()
+
+print("\nTreebank Tokenizer:")
+print(tokenizer.tokenize(txt))
+
+# WordPunct Tokenizer
+from nltk.tokenize import WordPunctTokenizer
+
+tokenizer = WordPunctTokenizer()
+
+print("\nWordPunct Tokenizer:")
+print(tokenizer.tokenize(txt))
+
+# Regexp Tokenizer
+from nltk.tokenize import RegexpTokenizer
+
+tokenizer = RegexpTokenizer(r"[\w']+")
+
+print("\nRegexp Tokenizer:")
+print(tokenizer.tokenize(txt))
+
+# Whitespace Tokenizer
+from nltk.tokenize import WhitespaceTokenizer
+
+print("\nWhitespace Tokenizer:")
+print(WhitespaceTokenizer().tokenize(txt))
+
+# =========================================
+# STOPWORDS
+# =========================================
+
+from nltk.corpus import stopwords
+
+stop_words = stopwords.words('english')
+
+print("\nEnglish Stopwords:")
+print(stop_words[:20])
+
+# Add custom stopwords
+stop_words.append('this')
+
+newStopWords = ['there', 'therefore']
+stop_words.extend(newStopWords)
+
+print("\nUpdated Stopwords:")
+print(stop_words[-10:])
+
+# =========================================
+# POS TAGGING
+# =========================================
+
+txt2 = """
+Ukraine’s defence ministry says Russian forces are attempting to storm Mariupol.
+President Vladimir Putin tells a World War II Victory Day parade in Moscow’s Red Square.
+Putin also says Moscow’s invasion was a preemptive move.
+President Volodymyr Zelenskyy calls for moves to open Ukrainian ports blockaded by Russia.
+"""
+
+# Tokenize words
+wrd_lst = WhitespaceTokenizer().tokenize(txt2)
+
+print("\nWord List:")
+print(wrd_lst)
+
+# Remove stopwords
+filtered_words = []
+
+for wrd in wrd_lst:
+    if wrd.lower() not in stop_words:
+        filtered_words.append(wrd)
+
+print("\nAfter Stopword Removal:")
+print(filtered_words)
+
+# POS Tagging
+pos_tags = nltk.pos_tag(filtered_words)
+
+print("\nPOS Tags:")
+print(pos_tags)
+
+# =========================================
+# TF-IDF
+# =========================================
+
+d0 = "The simplest example is provided by deterministic nodes."
+d1 = "The relationship can also be numerical between parent nodes."
+d2 = "This is a worst-case scenario of relationship between parents."
+
+docs = [d0, d1, d2]
+
+# TF-IDF Vectorizer
+tfidf = TfidfVectorizer(ngram_range=(1, 1))
+
+# Fit and transform
+result = tfidf.fit_transform(docs)
+
+# Feature names
+feature_names = tfidf.get_feature_names_out()
+
+# Create DataFrame
+df = pd.DataFrame(
+    result.toarray(),
+    columns=feature_names
+)
+
+print("\nTF-IDF DataFrame:")
+display(df)
+
+# Transposed Matrix
+df2 = pd.DataFrame(
+    result.toarray().transpose(),
+    index=feature_names
+)
+
+print("\nTransposed TF-IDF Matrix:")
+display(df2)
+
+# TF-IDF words from first document
+dff = df2.to_dict()
+
+tfidf_val = dff[0]
+
+print("\nWords with TF-IDF value > 0.1")
+
+for k, v in tfidf_val.items():
+    if v > 0.1:
+        print(k, ":", round(v, 3))
