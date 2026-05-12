@@ -1,0 +1,28 @@
+body {
+  background-color: #f4f6f9;
+}
+
+#wrapper {
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  min-height: 100vh;
+}
+
+.sidebar .nav-link {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.sidebar .nav-link:hover {
+  background-color: #495057;
+  cursor: pointer;
+}
+
+/* Content */
+#content-area {
+  width: 100%;
+}
