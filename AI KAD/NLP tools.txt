@@ -1,0 +1,106 @@
+import nltk
+nltk.download('punkt')
+
+txt="Let's see how it's, working. in such a high #temparature# also"
+
+from nltk.tokenize import sent_tokenize, word_tokenize
+
+sent_tokenize(txt)
+
+word_tokenize(txt)
+
+from nltk.tokenize import TreebankWordTokenizer
+tokenizer = TreebankWordTokenizer()
+tokenizer.tokenize(txt)
+
+from nltk.tokenize import WordPunctTokenizer
+tokenizer = WordPunctTokenizer()
+tokenizer.tokenize(txt)
+
+from nltk.tokenize import RegexpTokenizer
+tokenizer = RegexpTokenizer("[\w']+")
+tokenizer.tokenize(txt)
+
+from nltk.tokenize import WhitespaceTokenizer
+WhitespaceTokenizer().tokenize(txt)
+
+import nltk
+nltk.download('stopwords')
+
+import nltk
+from nltk.corpus import stopwords
+print(stopwords.words('english'))
+
+stopwords = nltk.corpus.stopwords.words('english')
+stopwords.append('this')
+
+stopwords = nltk.corpus.stopwords.words('english')
+newStopWords = ['there','therefore']
+stopwords.extend(newStopWords)
+
+print(stopwords)
+
+import nltk
+nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')
+from nltk.corpus import stopwords
+stopwords = nltk.corpus.stopwords.words('english')
+
+txt = """Ukraine’s defence ministry says Russian forces are attempting to “storm” Mariupol
+President Vladimir Putin tells a World War II Victory Day parade in Moscow’s Red Square th
+Putin also says Moscow’s invasion was a preemptive move to ward off aggression from the We
+President Volodymyr Zelenskyy calls for moves to open Ukrainian ports blockaded by Russia 
+"""
+
+from nltk.tokenize import WhitespaceTokenizer
+wrd_lst=WhitespaceTokenizer().tokenize(txt)
+print(wrd_lst)
+
+wrd_list = []
+for wrd in wrd_lst:
+    if wrd not in stop_words:
+        wrd_list.append(wrd)
+print(wrd_list)
+
+pos_dict={}
+pos_dict=nltk.pos_tag(wrd_list)
+
+print(pos_dict)
+
+docs = [d0, d1, d2]
+tfidf = TfidfVectorizer()
+matrix = tfidf.fit_transform(docs)
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+d0 = "The simplest example is provided by deterministic nodes."
+d1 = "The relationship can also be numerical between parent nodes."
+d2 = "This is a worst-case scenario of relationship between parents."
+
+
+import pandas as pd
+string = [d0,d1,d2]
+tfidf = TfidfVectorizer(ngram_range = (1,1))
+result = tfidf.fit_transform(string)
+feature_names=tfidf.get_feature_names_out()
+dense=result.todense()
+dens_lst=dense.tolist()
+df=pd.DataFrame(dens_lst,columns=feature_names)
+
+
+
+
+df2 = pd.DataFrame(result.toarray().transpose(),
+index=tfidf.get_feature_names_out())
+
+
+print(df2)
+
+dff = df2.to_dict()
+tfidf_val = dff[0]
+for k, v in tfidf_val.items():
+    if v > 0.1:
+        print(k)
+
+
+

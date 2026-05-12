@@ -1,0 +1,59 @@
+def print_board(board):
+    print(f' {board[0]} | {board[1]} | {board[2]} ')
+    print('-----------')
+    print(f' {board[3]} | {board[4]} | {board[5]} ')
+    print('-----------')
+    print(f' {board[6]} | {board[7]} | {board[8]} ')
+
+def check_win(board, player):
+    # Check horizontal lines
+    for i in range(0, 9, 3):
+        if board[i] == board[i+1] == board[i+2] == player:
+            return True
+    # Check vertical lines
+    for i in range(3):
+        if board[i] == board[i+3] == board[i+6] == player:
+            return True
+    # Check diagonals
+    if board[0] == board[4] == board[8] == player:
+        return True
+    if board[2] == board[4] == board[6] == player:
+        return True
+    return False
+
+def tic_tac_toe():
+    # Initialize the board
+    board = ['1','2','3','4','5','6','7','8','9']
+    # Players
+    players = ['X', 'O']
+    turn = 0
+    current_player = players[turn]
+    print_board(board)
+    while True:
+        # Input
+        position = input(f"Player {current_player}, enter a position (1-9): ")
+        # Validate input
+        if position not in ['1','2','3','4','5','6','7','8','9']:
+            print("Invalid position. Please try again.")
+            continue
+        index = int(position) - 1
+        # Check if taken
+        if board[index] in players:
+            print("Position already taken. Please try again.")
+            continue
+        # Move
+        board[index] = current_player
+        print_board(board)
+        # Win check
+        if check_win(board, current_player):
+            print(f"Player {current_player} wins!")
+            break
+        # Tie check
+        if all(symbol in players for symbol in board):
+            print("Tie game!")
+            break
+        # Switch player
+        turn = (turn + 1) % 2
+        current_player = players[turn]
+# Start game
+tic_tac_toe()
