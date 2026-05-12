@@ -1,0 +1,59 @@
+Check Git:
+git --version
+
+
+Install (Ubuntu):
+sudo apt update
+sudo apt install git -y
+
+
+Configure Git (first time setup)
+git config --global user.name "Your Name"
+git config --global user.email "your-email@example.com"
+
+
+4. Create a Repository on GitHub
+Go to GitHub
+Click New Repository
+Fill details:
+Repository name: my-project
+Choose Public / Private
+Click Create Repository
+
+
+
+5. Initialize Local Project
+
+Open terminal in your project folder:
+
+cd your-project-folder
+git init
+
+
+6. Add Files to Git
+git add .
+
+
+7. Commit Changes
+git commit -m "First commit"
+
+
+ 8. Connect to GitHub Repository
+
+Copy your GitHub repo URL like:
+
+https://github.com/username/my-project.git
+
+Then run:
+
+git remote add origin https://github.com/username/my-project.git
+
+
+
+9. Push Code to GitHub
+git branch -M main
+git push -u origin main
+
+
+
+
