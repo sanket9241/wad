@@ -1,0 +1,60 @@
+/* Sidebar Styling */
+.sidebar {
+    min-height: 100vh;
+    background-color: #212529; 
+    transition: all 0.3s ease;
+}
+
+.sidebar-brand {
+    font-size: 1.25rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    color: #adb5bd;
+    font-size: 1rem;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #fff;
+    background-color: #343a40;
+    border-radius: 5px;
+}
+
+.nav-link i {
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+/* Stat Cards Hover Effect */
+.stat-card {
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Content Section Logic 
+   By default, sections are hidden. 
+   When the 'active' class is added via JS, they are shown.
+*/
+.content-section {
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.content-section.active {
+    display: block;
+}
+
+/* Simple fade-in animation for smooth transitions */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanket Admin Dashboard</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <div class="container-fluid">
+        <div class="row">
+            
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse p-3" id="sidebarMenu">
+                <div class="position-sticky pt-2">
+                    <div class="text-white text-center pb-3 mb-3 border-bottom sidebar-brand">
+                        <i class="bi bi-lightning-charge-fill text-warning"></i> Sanket Admin
+                    </div>
+                    
+                    <ul class="nav flex-column" id="sidebar-nav">
+                        <li class="nav-item mb-1">
+                            <a class="nav-link active" href="#" data-target="dashboard"><i class="bi bi-house-door"></i> Dashboard</a>
+                        </li>
+                        <li class="nav-item mb-1">
+                            <a class="nav-link" href="#" data-target="orders"><i class="bi bi-cart3"></i> Orders</a>
+                        </li>
+                        <li class="nav-item mb-1">
+                            <a class="nav-link" href="#" data-target="products"><i class="bi bi-box-seam"></i> Products</a>
+                        </li>
+                        <li class="nav-item mb-1">
+                            <a class="nav-link" href="#" data-target="customers"><i class="bi bi-people"></i> Customers</a>
+                        </li>
+                        <li class="nav-item mb-1">
+                            <a class="nav-link" href="#" data-target="reports"><i class="bi bi-bar-chart"></i> Reports</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-4">
+                
+                <div id="dashboard" class="content-section active">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-4 border-bottom">
+                        <h1 class="h2 text-dark">Dashboard Overview</h1>
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4 mb-4">
+                        <div class="col"><div class="card shadow-sm border-0 border-start border-primary border-4 h-100 stat-card"><div class="card-body"><h6>Total Revenue</h6><h3>$45,231</h3></div></div></div>
+                        <div class="col"><div class="card shadow-sm border-0 border-start border-success border-4 h-100 stat-card"><div class="card-body"><h6>New Orders</h6><h3>356</h3></div></div></div>
+                        <div class="col"><div class="card shadow-sm border-0 border-start border-info border-4 h-100 stat-card"><div class="card-body"><h6>Active Users</h6><h3>1,245</h3></div></div></div>
+                        <div class="col"><div class="card shadow-sm border-0 border-start border-warning border-4 h-100 stat-card"><div class="card-body"><h6>Conversion Rate</h6><h3>4.2%</h3></div></div></div>
+                    </div>
+                </div>
+
+                <div id="orders" class="content-section">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-4 border-bottom">
+                        <h1 class="h2 text-dark">Recent Orders</h1>
+                    </div>
+                    <table class="table table-striped table-hover bg-white shadow-sm rounded">
+                        <thead class="table-dark">
+                            <tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Status</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>#1024</td><td>John Doe</td><td>Oct 24, 2023</td><td><span class="badge bg-success">Shipped</span></td></tr>
+                            <tr><td>#1025</td><td>Jane Smith</td><td>Oct 25, 2023</td><td><span class="badge bg-warning text-dark">Pending</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="products" class="content-section">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-4 border-bottom">
+                        <h1 class="h2 text-dark">Inventory & Products</h1>
+                        <button class="btn btn-primary btn-sm"><i class="bi bi-plus-lg"></i> Add Product</button>
+                    </div>
+                    <p class="lead">Your product inventory list will go here.</p>
+                </div>
+
+                <div id="customers" class="content-section">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-4 border-bottom">
+                        <h1 class="h2 text-dark">Customer Database</h1>
+                    </div>
+                    <p class="lead">Manage your registered customers and their details here.</p>
+                </div>
+
+                <div id="reports" class="content-section">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-4 border-bottom">
+                        <h1 class="h2 text-dark">Analytics & Reports</h1>
+                    </div>
+                    <p class="lead">Sales charts and performance metrics will be displayed here.</p>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
