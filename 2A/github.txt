@@ -1,3 +1,5 @@
+Pass@123#sankii
+
 Check Git:
 git --version
 
@@ -8,8 +10,8 @@ sudo apt install git -y
 
 
 Configure Git (first time setup)
-git config --global user.name "Your Name"
-git config --global user.email "your-email@example.com"
+git config --global user.name "sanket9241"
+git config --global user.email "sanket9241@gmail.com"
 
 
 4. Create a Repository on GitHub
